@@ -11,8 +11,24 @@ public:
         next = NULL;
     }
 };
+void printList(Node* head) {
+    Node* temp = head;
 
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
 int main(){
-    cout<<"welcome to linked list"<<endl;
+     Node* head = new Node(10);
+
+    Node* second = new Node(20);
+
+    Node* third = new Node(30);
+
+    head->next = second;
+    second->next = third;
+
+    printList(head);
     return 0;
 }
