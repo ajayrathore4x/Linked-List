@@ -19,6 +19,12 @@ void printList(Node* head) {
         temp = temp->next;
     }
 }
+void insertAtHead(Node*& head, int value) {
+    Node* newNode = new Node(value);
+
+    newNode->next = head;
+    head = newNode;
+}
 int main(){
      Node* head = new Node(10);
 
@@ -28,6 +34,8 @@ int main(){
 
     head->next = second;
     second->next = third;
+    Node* newnode=new Node(5);
+    insertAtHead(head,5);
 
     printList(head);
     return 0;
