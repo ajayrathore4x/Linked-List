@@ -24,6 +24,20 @@ void insertAtHead(Node*& head, int value) {
 
     newNode->next = head;
     head = newNode;
+    return;
+}
+void insertAtTail(Node*& head,int value){
+Node* newnode =new Node(value);
+if(head == NULL) {
+    head = newnode;
+    return;
+}
+Node* temp=head;
+while(temp->next!=NULL){
+    temp=temp->next;
+}
+temp->next=newnode;
+return;
 }
 int main(){
      Node* head = new Node(10);
@@ -34,8 +48,9 @@ int main(){
 
     head->next = second;
     second->next = third;
-    Node* newnode=new Node(5);
+   
     insertAtHead(head,5);
+    insertAtTail(head,40);
 
     printList(head);
     return 0;
