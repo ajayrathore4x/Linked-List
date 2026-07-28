@@ -81,6 +81,15 @@ newnode->next = temp->next;
 temp->next = newnode;
 return;
 }
+void deletenode(Node*& head){
+    if(head==NULL){
+        return;
+    }
+    Node* temp=head;
+    head=head->next;
+    delete temp;
+    return;
+}
 int main(){
      Node* head = new Node(10);
 
