@@ -90,6 +90,29 @@ void deletenode(Node*& head){
     delete temp;
     return;
 }
+void deleteTail(Node*& head) {
+
+    if(head == NULL)
+        return;
+
+    if(head->next == NULL) {
+        delete head;
+        head = NULL;
+        return;
+    }
+
+    Node* temp = head;
+
+    while(temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    Node* nodeToDelete = temp->next;
+
+    temp->next = NULL;
+
+    delete nodeToDelete;
+}
 int main(){
      Node* head = new Node(10);
 
