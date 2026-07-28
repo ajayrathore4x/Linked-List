@@ -60,6 +60,27 @@ void insertAtposition(Node*& head,int value,int position){
 }
 return;
 }
+void insertAtposition(Node*& head,int value,int position){
+    Node* newnode=new Node(value);
+    if(position == 1){
+    newnode->next = head;
+    head = newnode;
+    return;
+}
+    Node* temp=head;
+    int count=1;
+    while (temp != NULL && count < position - 1) {
+    temp = temp->next;
+    count++;
+  }
+  if (temp == NULL) {
+    return; // Invalid position
+}
+
+newnode->next = temp->next;
+temp->next = newnode;
+return;
+}
 int main(){
      Node* head = new Node(10);
 
