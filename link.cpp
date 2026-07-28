@@ -39,7 +39,7 @@ while(temp->next!=NULL){
 temp->next=newnode;
 return;
 }
-void insertAtMiddle(Node*& head,int value,int position){
+void insertAtpositin(Node*& head,int value,int position){
     Node* newnode=new Node(value);
     if(position == 1){
     newnode->next = head;
