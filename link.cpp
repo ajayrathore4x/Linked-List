@@ -143,6 +143,18 @@ void deleteAtPosition(Node*& head, int position) {
     delete nodeToDelete;
     return;
 }
+void searchinlinklist(Node* head,int value){
+    Node* temp=head;
+    while(temp!=NULL){
+        if(temp->data==value){
+            cout<<"it exists"<<endl;
+            return;
+        }
+        temp=temp->next;
+    }
+     cout<<"doesn't exist"<<endl;
+     return;
+}
 int main(){
      Node* head = new Node(10);
 
@@ -156,7 +168,7 @@ int main(){
     //insertAtHead(head,5);
     insertAtTail(head,40);
    // insertAtposition(head,25,3);
-   deleteAtPosition(head ,3);
+  // deleteAtPosition(head ,3);
 
     printList(head);
     return 0;
