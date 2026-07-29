@@ -19,6 +19,16 @@ void printList(Node* head) {
         temp = temp->next;
     }
 }
+int length(Node* head){
+   // if(head==NULL) return 0;
+    Node* temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        temp=temp->next;
+    }
+    return count;
+}
 void insertAtHead(Node*& head, int value) {
     Node* newNode = new Node(value);
 
@@ -164,8 +174,6 @@ int main(){
 
     head->next = second;
     second->next = third;
-   
-    //insertAtHead(head,5);
     insertAtTail(head,40);
    // insertAtposition(head,25,3);
   // deleteAtPosition(head ,3);
