@@ -29,6 +29,7 @@ int length(Node* head){
     }
     return count;
 }
+
 void insertAtHead(Node*& head, int value) {
     Node* newNode = new Node(value);
 
