@@ -155,6 +155,25 @@ void searchinlinklist(Node* head,int value){
      cout<<"doesn't exist"<<endl;
      return;
 }
+void reverseList(Node*& head) {
+
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* nextNode = NULL;
+
+    while (curr != NULL) {
+
+        nextNode = curr->next;
+
+        curr->next = prev;
+
+        prev = curr;
+
+        curr = nextNode;
+    }
+
+    head = prev;
+}
 int main(){
      Node* head = new Node(10);
 
@@ -169,6 +188,7 @@ int main(){
     insertAtTail(head,40);
    // insertAtposition(head,25,3);
   // deleteAtPosition(head ,3);
+  reverseList(head);
 
     printList(head);
     return 0;
