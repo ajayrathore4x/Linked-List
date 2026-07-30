@@ -157,22 +157,28 @@ void searchinlinklist(Node* head,int value){
 }
 void reverseList(Node*& head) {
 
-    Node* prev = NULL;
-    Node* curr = head;
-    Node* nextNode = NULL;
+    Node* previous = NULL;
+    Node* current = head;
+    Node* nextnode = NULL;
+    while (current != NULL) {
+        nextnode = current->next;
+        current->next = previous;
+        previous = current;
+        current = nextnode;
+    }
+    head = previous;
+}
+Node* findMiddle(Node* head) {
 
-    while (curr != NULL) {
+    Node* slow = head;
+    Node* fast = head;
 
-        nextNode = curr->next;
-
-        curr->next = prev;
-
-        prev = curr;
-
-        curr = nextNode;
+    while(fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
-    head = prev;
+    return slow;
 }
 int main(){
      Node* head = new Node(10);
@@ -188,7 +194,7 @@ int main(){
     insertAtTail(head,40);
    // insertAtposition(head,25,3);
   // deleteAtPosition(head ,3);
-  reverseList(head);
+  //reverseList(head);
 
     printList(head);
     return 0;
