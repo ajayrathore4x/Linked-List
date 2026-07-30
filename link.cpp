@@ -196,6 +196,31 @@ while (fast != NULL && fast->next != NULL) {
 
 return false;
 }
+Node* detectCyclePoint(Node* head) {
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != NULL && fast->next != NULL) {
+
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+
+            Node* ptr = head;
+
+            while (ptr != slow) {
+                ptr = ptr->next;
+                slow = slow->next;
+            }
+
+            return ptr;
+        }
+    }
+
+    return NULL;
+}
 int main(){
      Node* head = new Node(10);
 
