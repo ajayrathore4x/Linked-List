@@ -221,6 +221,27 @@ Node* detectCyclePoint(Node* head) {
 
     return NULL;
 }
+Node* mergetwolists(Node* l1,Node* l2){
+    Node* dummy=new Node(-1);
+    Node* tail=dummy;
+    while(l1 != NULL&&l2!=NULL){
+    if(l1->data <=l2->data){
+        tail->next=l1;
+        tail=l1;
+        l1=l1->next;
+    }
+    else{
+        tail->next=l2;
+        tail=l2;
+        l2=l2->next;
+    }
+}
+    if(l1!=NULL) tail->next=l1;
+    else tail->next=l2;
+
+    return dummy->next;
+    
+}
 int main(){
      Node* head = new Node(10);
 
