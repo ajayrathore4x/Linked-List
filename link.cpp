@@ -242,6 +242,24 @@ Node* mergetwolists(Node* l1,Node* l2){
     return dummy->next;
     
 }
+Node* removeNthFromEnd(Node* head, int n) {
+Node* dummy=new Node(-1);
+dummy->next=head;
+Node*slow=dummy;
+Node* fast=dummy;
+for(int i=0;i<=n;i++){
+fast = fast->next;
+}
+while(fast!=NULL){
+    slow=slow->next;
+    fast=fast->next;
+}
+Node* nodetodelete=slow->next;
+slow->next=slow->next->next;
+delete nodetodelete;
+
+return dummy->next;
+}
 int main(){
      Node* head = new Node(10);
 
