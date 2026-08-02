@@ -134,6 +134,26 @@ delete nodetodelete;
 
 return dummy->next;
 }
+bool isPalindrome(Node* head){
+    bool ans=true;
+    if(head == NULL || head->next == NULL)
+    return ans;
+   Node* medium = findMiddle(head);
+    Node* left=head;
+    Node* secondHalf = medium->next;
+    reverseList(secondHalf);
+    Node* right = secondHalf;
+    while(right!=NULL){
+        if(left->data!=right->data){
+            ans=false;
+            break;
+        }
+        left = left->next;
+        right = right->next;
+    }
+    reverseList(secondHalf);
+    return ans;
+}
 int main(){
     Node* head=new Node(10);
     Node* second=new Node(20);
