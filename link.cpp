@@ -154,6 +154,28 @@ bool isPalindrome(Node* head){
     reverseList(secondHalf);
     return ans;
 }
+Node *getIntersectionNode(Node *headA, Node *headB) {
+
+    int lenA = length(headA);
+    int lenB = length(headB);
+
+    while(lenA > lenB){
+        headA = headA->next;
+        lenA--;
+    }
+
+    while(lenB > lenA){
+        headB = headB->next;
+        lenB--;
+    }
+
+    while(headA != headB){
+        headA = headA->next;
+        headB = headB->next;
+    }
+
+    return headA;
+}
 int main(){
     Node* head=new Node(10);
     Node* second=new Node(20);
