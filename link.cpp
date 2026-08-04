@@ -176,29 +176,50 @@ Node *getIntersectionNode(Node *headA, Node *headB) {
 
     return headA;
 }
-class Solution {
-public:
-    Node *getIntersectionNode2(Node *headA, Node *headB) {
+Node *getIntersectionNode2(Node *headA, Node *headB) {
 
-        Node* p1 = headA;
-        Node* p2 = headB;
+    Node* p1 = headA;
+    Node* p2 = headB;
 
-        while (p1 != p2) {
+    while (p1 != p2) {
 
-            if (p1 == NULL)
-                p1 = headB;
-            else
-                p1 = p1->next;
+        if (p1 == NULL)
+            p1 = headB;
+        else
+            p1 = p1->next;
 
-            if (p2 == NULL)
-                p2 = headA;
-            else
-                p2 = p2->next;
-        }
-
-        return p1;
+        if (p2 == NULL)
+            p2 = headA;
+        else
+            p2 = p2->next;
     }
-};
+
+    return p1;
+}
+Node* reverseBetween(Node* head,int left,int right){
+    if(head==NULL||head->next==NULL||head->next->next==NULL){
+        return head;
+    }
+    Node* dummy=new Node(-1);
+    dummy->next=head;
+    Node* first=dummy;
+    Node* second=first->next->next;
+    while(second->next!=NULL){
+        if(first->next->data==left&&second->next->data==right){
+           Node* new1=first->next;
+           Node* new2=second->next;
+           new1->next=new2->next;
+           second->next=new1;
+           new2->next=second;
+           
+           first->next=new2;
+           return dummy->next;
+        }
+        first=first->next;
+        second=second->next;
+    }
+    return dummy->next;
+}
 int main(){
     Node* head=new Node(10);
     Node* second=new Node(20);
