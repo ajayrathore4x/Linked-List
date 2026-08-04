@@ -220,6 +220,33 @@ Node* reverseBetween(Node* head,int left,int right){
     }
     return dummy->next;
 }
+Node* reverseBetween1(Node* head,int left ,int right){
+    if(head == NULL || left == right){
+    return head;}
+    Node* dummy=new Node(-1);
+    dummy->next=head;
+    Node* before=dummy;
+    int position=1;
+    while(position<left){
+        before=before->next;
+        position++;
+    }
+    Node* start=before->next;
+    Node* prev=NULL;
+    Node* curr=before->next;
+    Node* next=NULL;
+    while(position<=right){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        position++;
+    }
+    before->next=prev;
+    start->next=curr;
+
+    return dummy->next;
+}
 int main(){
     Node* head=new Node(10);
     Node* second=new Node(20);
