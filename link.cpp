@@ -247,6 +247,52 @@ Node* reverseBetween1(Node* head,int left ,int right){
 
     return dummy->next;
 }
+Node* reverseKGroup(Node* head, int k) {
+
+    if (head == NULL || k == 1)
+        return head;
+
+    Node* dummy = new Node(-1);
+    dummy->next = head;
+
+    Node* before = dummy;
+
+    while (true) {
+
+        Node* end = before;
+
+        for (int i = 0; i < k && end != NULL; i++) {
+            end = end->next;
+        }
+
+        if (end == NULL)
+            break;
+
+        Node* groupNext = end->next;
+
+        Node* prev = groupNext;
+        Node* curr = before->next;
+
+        while (curr != groupNext) {
+
+            Node* next = curr->next;
+
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node* start = before->next;
+
+        before->next = end;
+        before = start;
+    }
+
+    Node* newHead = dummy->next;
+    delete dummy;   // Good practice to avoid a memory leak
+
+    return newHead;
+}
 int main(){
     Node* head=new Node(10);
     Node* second=new Node(20);
